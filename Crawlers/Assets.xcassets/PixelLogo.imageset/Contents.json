@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "Pixel_Matter_Studio_Logo.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

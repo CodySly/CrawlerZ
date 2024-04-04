@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "KingCrawlersTransparent.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
