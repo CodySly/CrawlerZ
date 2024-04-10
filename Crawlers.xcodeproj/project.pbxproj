@@ -59,7 +59,7 @@
 		F2A214A12BB3520400F6D453 /* LocationPreviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationPreviewView.swift; sourceTree = "<group>"; };
 		F2A214A22BB3520400F6D453 /* LocationsListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationsListView.swift; sourceTree = "<group>"; };
 		F2A214A32BB3520400F6D453 /* LocationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
-		F2FE14F12BBDC3C1005EEB9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		F2FE14F12BBDC3C1005EEB9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +118,8 @@
 		F28B9C5F2BBF3A4800CEBEF8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F205BDB52BBEFEBA00EF9EF6 /* GoogleService-Info.plist */,
+				F2A214902BB3514800F6D453 /* Assets.xcassets */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -126,7 +128,6 @@
 			isa = PBXGroup;
 			children = (
 				F2A2148B2BB3514700F6D453 /* Crawlers */,
-				F205BDB52BBEFEBA00EF9EF6 /* GoogleService-Info.plist */,
 				F2A2148A2BB3514700F6D453 /* Products */,
 				F28B9C5F2BBF3A4800CEBEF8 /* Frameworks */,
 			);
@@ -151,7 +152,6 @@
 				F21236602BB4911800CF5E88 /* SideMenu */,
 				F2FE14EE2BBDB57C005EEB9F /* Social */,
 				F2A214922BB3514800F6D453 /* Preview Content */,
-				F2A214902BB3514800F6D453 /* Assets.xcassets */,
 			);
 			path = Crawlers;
 			sourceTree = "<group>";
