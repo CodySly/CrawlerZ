@@ -21,7 +21,7 @@ struct LocationView: View {
                 annotationContent: { location in
                 MapMarker(coordinate: location.coordinates)
             })
-                //.ignoresSafeArea()
+                .ignoresSafeArea()
                 .mapStyle(.imagery(elevation: .automatic))
                 
                
@@ -54,7 +54,7 @@ struct LocationView: View {
 //        }
         
         
-        .sheet(item: $vm.sheetLocation, onDismiss: nil) { location in
+        .fullScreenCover(item: $vm.sheetLocation, onDismiss: nil) { location in
             LocationDetailedView(location: location)
                 .ignoresSafeArea(.all)
                 .presentationBackground(.ultraThinMaterial)

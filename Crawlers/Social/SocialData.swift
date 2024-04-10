@@ -6,3 +6,12 @@
 //
 
 import Foundation
+import SwiftUI
+import UIKit
+
+struct SocialData: Identifiable {
+    let id = UUID()
+    let nameSocial: String
+    let urlSocial: String
+    let imageSocial: [String]
+}

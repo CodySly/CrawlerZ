@@ -7,18 +7,59 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F205BDB22BBEF2E500EF9EF6 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F205BDB12BBEF2E500EF9EF6 /* LoginView.swift */; };
+		F205BDB62BBEFEBA00EF9EF6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F205BDB52BBEFEBA00EF9EF6 /* GoogleService-Info.plist */; };
+		F205BDB92BBF019000EF9EF6 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = F205BDB82BBF019000EF9EF6 /* FirebaseAnalytics */; };
+		F205BDBB2BBF019000EF9EF6 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F205BDBA2BBF019000EF9EF6 /* FirebaseAnalyticsSwift */; };
+		F205BDBD2BBF019000EF9EF6 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = F205BDBC2BBF019000EF9EF6 /* FirebaseAppCheck */; };
+		F205BDBF2BBF1C8200EF9EF6 /* SocialData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F205BDBE2BBF1C8200EF9EF6 /* SocialData.swift */; };
+		F21236612BB4911800CF5E88 /* SideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F212365E2BB4911800CF5E88 /* SideMenu.swift */; };
+		F21236622BB4911800CF5E88 /* SideMenuContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F212365F2BB4911800CF5E88 /* SideMenuContent.swift */; };
+		F24AA4CE2BBB0CBC00C4F29B /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24AA4CD2BBB0CBC00C4F29B /* AccountView.swift */; };
+		F24AA4D12BBB236900C4F29B /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24AA4D02BBB236900C4F29B /* MapView.swift */; };
+		F24AAA582BC6E99200F93E90 /* SocialCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24AAA572BC6E99200F93E90 /* SocialCardView.swift */; };
+		F24AAA5D2BC6EA6900F93E90 /* SocialGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24AAA5C2BC6EA6900F93E90 /* SocialGridView.swift */; };
+		F24AAA5F2BC6F0CD00F93E90 /* SocialDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24AAA5E2BC6F0CC00F93E90 /* SocialDataService.swift */; };
+		F28B9C5E2BBF398600CEBEF8 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F28B9C5D2BBF398600CEBEF8 /* RegistrationView.swift */; };
+		F28B9C612BBF3A4800CEBEF8 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = F28B9C602BBF3A4800CEBEF8 /* FirebaseAuth */; };
 		F2A2148D2BB3514700F6D453 /* CrawlersApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A2148C2BB3514700F6D453 /* CrawlersApp.swift */; };
 		F2A2148F2BB3514700F6D453 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A2148E2BB3514700F6D453 /* ContentView.swift */; };
 		F2A214912BB3514800F6D453 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2A214902BB3514800F6D453 /* Assets.xcassets */; };
 		F2A214942BB3514800F6D453 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2A214932BB3514800F6D453 /* Preview Assets.xcassets */; };
+		F2A214A62BB3520400F6D453 /* LocationsDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A2149A2BB3520400F6D453 /* LocationsDataService.swift */; };
+		F2A214A72BB3520400F6D453 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A2149C2BB3520400F6D453 /* Location.swift */; };
+		F2A214A82BB3520400F6D453 /* TrailLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A2149E2BB3520400F6D453 /* TrailLocationView.swift */; };
+		F2A214A92BB3520400F6D453 /* LocationDetailedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A214A02BB3520400F6D453 /* LocationDetailedView.swift */; };
+		F2A214AA2BB3520400F6D453 /* LocationPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A214A12BB3520400F6D453 /* LocationPreviewView.swift */; };
+		F2A214AB2BB3520400F6D453 /* LocationsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A214A22BB3520400F6D453 /* LocationsListView.swift */; };
+		F2A214AC2BB3520400F6D453 /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A214A32BB3520400F6D453 /* LocationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F205BDB12BBEF2E500EF9EF6 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		F205BDB52BBEFEBA00EF9EF6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F205BDBE2BBF1C8200EF9EF6 /* SocialData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialData.swift; sourceTree = "<group>"; };
+		F212365E2BB4911800CF5E88 /* SideMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenu.swift; sourceTree = "<group>"; };
+		F212365F2BB4911800CF5E88 /* SideMenuContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuContent.swift; sourceTree = "<group>"; };
+		F24AA4CD2BBB0CBC00C4F29B /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
+		F24AA4D02BBB236900C4F29B /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		F24AAA572BC6E99200F93E90 /* SocialCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialCardView.swift; sourceTree = "<group>"; };
+		F24AAA5C2BC6EA6900F93E90 /* SocialGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialGridView.swift; sourceTree = "<group>"; };
+		F24AAA5E2BC6F0CC00F93E90 /* SocialDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialDataService.swift; sourceTree = "<group>"; };
+		F28B9C5D2BBF398600CEBEF8 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		F2A214892BB3514700F6D453 /* Crawlers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Crawlers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2A2148C2BB3514700F6D453 /* CrawlersApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrawlersApp.swift; sourceTree = "<group>"; };
 		F2A2148E2BB3514700F6D453 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F2A214902BB3514800F6D453 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F2A214932BB3514800F6D453 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		F2A2149A2BB3520400F6D453 /* LocationsDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationsDataService.swift; sourceTree = "<group>"; };
+		F2A2149C2BB3520400F6D453 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		F2A2149E2BB3520400F6D453 /* TrailLocationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrailLocationView.swift; sourceTree = "<group>"; };
+		F2A214A02BB3520400F6D453 /* LocationDetailedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationDetailedView.swift; sourceTree = "<group>"; };
+		F2A214A12BB3520400F6D453 /* LocationPreviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationPreviewView.swift; sourceTree = "<group>"; };
+		F2A214A22BB3520400F6D453 /* LocationsListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationsListView.swift; sourceTree = "<group>"; };
+		F2A214A32BB3520400F6D453 /* LocationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
+		F2FE14F12BBDC3C1005EEB9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,17 +67,68 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F205BDBB2BBF019000EF9EF6 /* FirebaseAnalyticsSwift in Frameworks */,
+				F205BDBD2BBF019000EF9EF6 /* FirebaseAppCheck in Frameworks */,
+				F205BDB92BBF019000EF9EF6 /* FirebaseAnalytics in Frameworks */,
+				F28B9C612BBF3A4800CEBEF8 /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F212365D2BB490B000CF5E88 /* Trails */ = {
+			isa = PBXGroup;
+			children = (
+				F2A214A32BB3520400F6D453 /* LocationView.swift */,
+				F2A214A22BB3520400F6D453 /* LocationsListView.swift */,
+				F2A214A12BB3520400F6D453 /* LocationPreviewView.swift */,
+				F2A214A02BB3520400F6D453 /* LocationDetailedView.swift */,
+			);
+			path = Trails;
+			sourceTree = "<group>";
+		};
+		F21236602BB4911800CF5E88 /* SideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				F212365F2BB4911800CF5E88 /* SideMenuContent.swift */,
+				F212365E2BB4911800CF5E88 /* SideMenu.swift */,
+			);
+			path = SideMenu;
+			sourceTree = "<group>";
+		};
+		F24AA4CC2BBB0C9500C4F29B /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				F24AA4CD2BBB0CBC00C4F29B /* AccountView.swift */,
+				F205BDB12BBEF2E500EF9EF6 /* LoginView.swift */,
+				F28B9C5D2BBF398600CEBEF8 /* RegistrationView.swift */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
+		F24AA4CF2BBB232B00C4F29B /* MapLocation */ = {
+			isa = PBXGroup;
+			children = (
+				F24AA4D02BBB236900C4F29B /* MapView.swift */,
+			);
+			path = MapLocation;
+			sourceTree = "<group>";
+		};
+		F28B9C5F2BBF3A4800CEBEF8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F2A214802BB3514600F6D453 = {
 			isa = PBXGroup;
 			children = (
 				F2A2148B2BB3514700F6D453 /* Crawlers */,
+				F205BDB52BBEFEBA00EF9EF6 /* GoogleService-Info.plist */,
 				F2A2148A2BB3514700F6D453 /* Products */,
+				F28B9C5F2BBF3A4800CEBEF8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -51,10 +143,15 @@
 		F2A2148B2BB3514700F6D453 /* Crawlers */ = {
 			isa = PBXGroup;
 			children = (
+				F2FE14F12BBDC3C1005EEB9F /* Info.plist */,
 				F2A2148C2BB3514700F6D453 /* CrawlersApp.swift */,
 				F2A2148E2BB3514700F6D453 /* ContentView.swift */,
-				F2A214902BB3514800F6D453 /* Assets.xcassets */,
+				F24AA4CC2BBB0C9500C4F29B /* Account */,
+				F2A214A52BB3520400F6D453 /* Trails */,
+				F21236602BB4911800CF5E88 /* SideMenu */,
+				F2FE14EE2BBDB57C005EEB9F /* Social */,
 				F2A214922BB3514800F6D453 /* Preview Content */,
+				F2A214902BB3514800F6D453 /* Assets.xcassets */,
 			);
 			path = Crawlers;
 			sourceTree = "<group>";
@@ -65,6 +162,61 @@
 				F2A214932BB3514800F6D453 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		F2A2149B2BB3520400F6D453 /* DataServices */ = {
+			isa = PBXGroup;
+			children = (
+				F2A2149A2BB3520400F6D453 /* LocationsDataService.swift */,
+			);
+			path = DataServices;
+			sourceTree = "<group>";
+		};
+		F2A2149D2BB3520400F6D453 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F2A2149C2BB3520400F6D453 /* Location.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F2A2149F2BB3520400F6D453 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				F2A2149E2BB3520400F6D453 /* TrailLocationView.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		F2A214A42BB3520400F6D453 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F212365D2BB490B000CF5E88 /* Trails */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F2A214A52BB3520400F6D453 /* Trails */ = {
+			isa = PBXGroup;
+			children = (
+				F24AA4CF2BBB232B00C4F29B /* MapLocation */,
+				F2A2149B2BB3520400F6D453 /* DataServices */,
+				F2A2149D2BB3520400F6D453 /* Models */,
+				F2A2149F2BB3520400F6D453 /* ViewModels */,
+				F2A214A42BB3520400F6D453 /* Views */,
+			);
+			path = Trails;
+			sourceTree = "<group>";
+		};
+		F2FE14EE2BBDB57C005EEB9F /* Social */ = {
+			isa = PBXGroup;
+			children = (
+				F205BDBE2BBF1C8200EF9EF6 /* SocialData.swift */,
+				F24AAA572BC6E99200F93E90 /* SocialCardView.swift */,
+				F24AAA5C2BC6EA6900F93E90 /* SocialGridView.swift */,
+				F24AAA5E2BC6F0CC00F93E90 /* SocialDataService.swift */,
+			);
+			path = Social;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +235,12 @@
 			dependencies = (
 			);
 			name = Crawlers;
+			packageProductDependencies = (
+				F205BDB82BBF019000EF9EF6 /* FirebaseAnalytics */,
+				F205BDBA2BBF019000EF9EF6 /* FirebaseAnalyticsSwift */,
+				F205BDBC2BBF019000EF9EF6 /* FirebaseAppCheck */,
+				F28B9C602BBF3A4800CEBEF8 /* FirebaseAuth */,
+			);
 			productName = Crawlers;
 			productReference = F2A214892BB3514700F6D453 /* Crawlers.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +269,9 @@
 				Base,
 			);
 			mainGroup = F2A214802BB3514600F6D453;
+			packageReferences = (
+				F205BDB72BBEFF8900EF9EF6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = F2A2148A2BB3514700F6D453 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -127,6 +288,7 @@
 			files = (
 				F2A214942BB3514800F6D453 /* Preview Assets.xcassets in Resources */,
 				F2A214912BB3514800F6D453 /* Assets.xcassets in Resources */,
+				F205BDB62BBEFEBA00EF9EF6 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,8 +299,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F205BDBF2BBF1C8200EF9EF6 /* SocialData.swift in Sources */,
 				F2A2148F2BB3514700F6D453 /* ContentView.swift in Sources */,
 				F2A2148D2BB3514700F6D453 /* CrawlersApp.swift in Sources */,
+				F21236612BB4911800CF5E88 /* SideMenu.swift in Sources */,
+				F205BDB22BBEF2E500EF9EF6 /* LoginView.swift in Sources */,
+				F28B9C5E2BBF398600CEBEF8 /* RegistrationView.swift in Sources */,
+				F21236622BB4911800CF5E88 /* SideMenuContent.swift in Sources */,
+				F24AAA5D2BC6EA6900F93E90 /* SocialGridView.swift in Sources */,
+				F24AA4D12BBB236900C4F29B /* MapView.swift in Sources */,
+				F24AA4CE2BBB0CBC00C4F29B /* AccountView.swift in Sources */,
+				F2A214A82BB3520400F6D453 /* TrailLocationView.swift in Sources */,
+				F2A214A72BB3520400F6D453 /* Location.swift in Sources */,
+				F2A214AA2BB3520400F6D453 /* LocationPreviewView.swift in Sources */,
+				F2A214AB2BB3520400F6D453 /* LocationsListView.swift in Sources */,
+				F2A214A62BB3520400F6D453 /* LocationsDataService.swift in Sources */,
+				F2A214AC2BB3520400F6D453 /* LocationView.swift in Sources */,
+				F24AAA5F2BC6F0CD00F93E90 /* SocialDataService.swift in Sources */,
+				F24AAA582BC6E99200F93E90 /* SocialCardView.swift in Sources */,
+				F2A214A92BB3520400F6D453 /* LocationDetailedView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,17 +454,20 @@
 				DEVELOPMENT_TEAM = 234DW6V72V;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Crawlers/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Crawlerz;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.navigation";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Show the user location";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.PixelMatterStudio.Crawlers;
+				PRODUCT_BUNDLE_IDENTIFIER = com.PixelMatterStudio.CrawlerZ;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -304,17 +486,20 @@
 				DEVELOPMENT_TEAM = 234DW6V72V;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Crawlers/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Crawlerz;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.navigation";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Show the user location";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.PixelMatterStudio.Crawlers;
+				PRODUCT_BUNDLE_IDENTIFIER = com.PixelMatterStudio.CrawlerZ;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -344,6 +529,40 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F205BDB72BBEFF8900EF9EF6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.23.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F205BDB82BBF019000EF9EF6 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F205BDB72BBEFF8900EF9EF6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		F205BDBA2BBF019000EF9EF6 /* FirebaseAnalyticsSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F205BDB72BBEFF8900EF9EF6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsSwift;
+		};
+		F205BDBC2BBF019000EF9EF6 /* FirebaseAppCheck */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F205BDB72BBEFF8900EF9EF6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAppCheck;
+		};
+		F28B9C602BBF3A4800CEBEF8 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F205BDB72BBEFF8900EF9EF6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F2A214812BB3514600F6D453 /* Project object */;
 }

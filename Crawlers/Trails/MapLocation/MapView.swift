@@ -6,10 +6,31 @@
 //
 
 import SwiftUI
+import MapKit
+import CoreLocation
 
 struct MapView: View {
+    @Environment(\.presentationMode) var presentationMode
+    @State private var position: MapCameraPosition = .userLocation(fallback: .automatic)
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Button("HomePage") {
+            presentationMode.wrappedValue.dismiss()
+        }
+        Map(position: $position) {
+            UserAnnotation()
+        }
+        .mapControls {
+            MapCompass()
+            MapPitchToggle()
+            MapUserLocationButton()
+            MapPitchToggle()
+        }
+        .mapStyle(.imagery(elevation: .automatic))
+        
+        .onAppear {
+            CLLocationManager().requestWhenInUseAuthorization()
+        }
     }
 }
 
