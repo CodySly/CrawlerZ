@@ -26,12 +26,9 @@ struct SideMenu<RenderView: View>: View {
                     .background(
                         Color.white
                     )
-                
             }
-            
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
-        //.ignoresSafeArea()
         .animation(.easeInOut, value: isShowing)
     }
 }

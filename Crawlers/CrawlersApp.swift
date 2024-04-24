@@ -24,24 +24,37 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 
 @main
 struct CrawlersApp: App {
-    // Example state variable to track user status
-    @State private var userStatus = UserStatus.notRegistered
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-    
+    @StateObject var session = SessionStore()
+
     var body: some Scene {
         WindowGroup {
             ContentView()
-            // Use a switch statement to handle different views based on user status
-//            switch userStatus {
-//            case .loggedIn:
-//                ContentView()
-//            case .loggedOut:
-//                LoginView(userStatus: $userStatus)
-//            case .notRegistered:
-//                RegistrationView() // Assuming you have a view for registration
-//            }
+                .environmentObject(session)
         }
     }
 }
 
+class SessionStore: ObservableObject {
+    @Published var isLoggedIn: Bool = false
+
+    func listen() {
+        Auth.auth().addStateDidChangeListener { auth, user in
+            if user != nil {
+                self.isLoggedIn = true
+            } else {
+                self.isLoggedIn = false
+            }
+        }
+    }
+
+    init() {
+        listen()
+    }
+
+    func logout() {
+        try? Auth.auth().signOut()
+        self.isLoggedIn = false
+    }
+}
 

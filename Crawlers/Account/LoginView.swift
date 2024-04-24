@@ -6,9 +6,11 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct LoginView: View {
     @Environment(\.presentationMode) var presentationMode
+    @State private var errorMessage: String?
     @State private var email = "" {
         didSet {
             isEmailValid = validateEmail(email: email)
@@ -20,45 +22,54 @@ struct LoginView: View {
     
     var body: some View {
         NavigationView {
-            VStack {
-                Text("")
-                    .toolbar {
-                        ToolbarItem(placement: .navigationBarLeading) {
-                            Button(action: {
-                                presentationMode.wrappedValue.dismiss()
-                            }) {
-                                Image(systemName: "arrow.uturn.backward")
+            ZStack {
+                Image("Gordon-Creek-Falls")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .ignoresSafeArea()
+                VStack {
+                    Text("")
+                        .toolbar {
+                            ToolbarItem(placement: .navigationBarLeading) {
+                                Button(action: {
+                                    presentationMode.wrappedValue.dismiss()
+                                }) {
+                                    Image(systemName: "arrow.uturn.backward")
+                                }
                             }
                         }
+                    TextField("Email", text: $email)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .padding()
+                    
+                    if !isEmailValid {
+                        Text("Invalid email format")
+                            .foregroundColor(.red)
                     }
-                TextField("Email", text: $email)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding()
-
-                if !isEmailValid {
-                    Text("Invalid email format")
+                    
+                    SecureField("Password", text: $password)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .padding()
+                    
+                    Button(action: {
+                        loginUser()
+                    }) {
+                        Text("Login")
+                            .padding()
+                            .background(isEmailValid ? Color.blue : Color.gray)
+                            .foregroundColor(.white)
+                            .cornerRadius(8)
+                            .disabled(!isEmailValid)
+                    }
+                    NavigationLink("Register", destination: RegistrationView(userStatus: $userStatus))
+                        .padding()
+                        .fontWeight(.bold)
                         .foregroundColor(.red)
                 }
-
-                SecureField("Password", text: $password)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding()
-                
-                Button(action: {
-                    loginUser()
-                }) {
-                    Text("Login")
-                        .padding()
-                        .background(isEmailValid ? Color.blue : Color.gray)
-                        .foregroundColor(.white)
-                        .cornerRadius(8)
-                        .disabled(!isEmailValid)
-                }
-                Spacer()
+                .padding()
+                .navigationTitle("Login")
+                .frame(width: 360)
             }
-            .padding()
-            .navigationTitle("Login")
-            .background(.gray)
         }
     }
     
@@ -68,14 +79,32 @@ struct LoginView: View {
         let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailPred.evaluate(with: email)
     }
-
-    // Simulates the login process, including validation and feedback
+    
     func loginUser() {
-        // Here, insert actual login logic, potentially involving a backend.
-        // This placeholder will update the user status upon successful login.
-        print("Logging in with Email: \(email), Password: \(password)")
-        // Example: Update the userStatus to .loggedIn upon successful login
-        self.userStatus = .loggedIn
+        // Check for valid email and non-empty password
+        guard isEmailValid, !password.isEmpty else {
+            errorMessage = "Invalid email format or empty password"
+            print("Failed attempt: Invalid email format or empty password")
+            return
+        }
+
+        Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
+            if let error = error {
+                // Log and handle errors
+                DispatchQueue.main.async {
+                    self.errorMessage = error.localizedDescription
+                }
+                print("Login error: \(error.localizedDescription)")
+                return
+            }
+
+            if authResult?.user != nil {
+                DispatchQueue.main.async {
+                    // Update user status on the main thread
+                    self.userStatus = .loggedIn
+                }
+            }
+        }
     }
 }
 

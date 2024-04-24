@@ -8,8 +8,14 @@
 import SwiftUI
 
 struct LoginAndRegistrationView: View {
+    @State private var userStatus: UserStatus = .notRegistered
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            VStack {
+                NavigationLink("Login", destination: LoginView(userStatus: $userStatus))
+                NavigationLink("Register", destination: RegistrationView(userStatus: $userStatus))
+            }
+        }
     }
 }
 

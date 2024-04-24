@@ -8,107 +8,143 @@
 import SwiftUI
 
 struct AccountView: View {
+    @EnvironmentObject var session: SessionStore
     @Environment(\.presentationMode) var presentationMode
+    @State private var image: UIImage?
+    @State private var isImagePickerPresented = false
     @State private var username = ""
-    @State private var email = "" {
-        didSet {
-            isEmailValid = validateEmail(email: email)
-        }
-    }
+    @State private var email = ""
     @State private var password = ""
     @State private var isEmailValid: Bool = true
-    
+
     var body: some View {
-        ZStack {
-            NavigationView {
-                VStack {
-//                    Button("HomePage") {
-//                        presentationMode.wrappedValue.dismiss()
-//                    }
-                    Text("Content")
-                        .toolbar {
-                            ToolbarItem(placement: .navigationBarLeading) {
-                                Button(action: {
-                                    presentationMode.wrappedValue.dismiss()
-                                }) {
-                                    Image(systemName: "arrow.uturn.backward")
-                                }
-                            }
-                        }
-                    //Account Info UserName, Image, bio, ect
-                    VStack {
-                        HStack {
-                            Image(systemName: "person.crop.circle")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 60, height: 60)
-                            TextField("Username", text: $username)
-                                .textFieldStyle(RoundedBorderTextFieldStyle())
-                                .padding()
-                        }
-                    }
-                    .background(.red)
-                    VStack {
-                        TextField("Username", text: $username)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
-                            .padding()
-                        
-                        TextField("Email", text: $email)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
-                            .padding()
-                    
-                    if !isEmailValid {
-                        Text("Invalid email format")
-                            .foregroundColor(.red)
-                    }
-                    
-                    SecureField("Password", text: $password)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
+        NavigationView {
+            VStack {
+                if let image = self.image {
+                    Image(uiImage: image)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 100, height: 100)
+                        .clipShape(Circle())
                         .padding()
-                    
-                    Button(action: {
-                        // Ideally, here you'd have logic to update the account,
-                        // like sending data to a server after validation checks.
-                        print("Username: \(username), Email: \(email), Password: \(password)")
-                    }) {
-                        Text("Update Account")
-                            .padding()
-                            .background(isEmailValid ? Color.blue : Color.gray)
-                            .foregroundColor(.white)
-                            .cornerRadius(8)
-                            .disabled(!isEmailValid)
-                    }
-                    }
-                    .background(.blue)
-                    
-                    Button(action: {
-                        // Perform logout action
-                        // This might involve clearing user data, tokens, and navigating to a login view.
-                        print("Logout")
-                    }) {
-                        Text("Logout")
-                            .foregroundColor(.red)
-                            .padding(.top, 10)
-                    }
-                    Spacer()
+                } else {
+                    Image(systemName: "person.crop.circle.fill")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 100, height: 100)
+                        .clipShape(Circle())
+                        .padding()
+                }
+                Button("Change Photo") {
+                    isImagePickerPresented = true
                 }
                 .padding()
-                .background(.gray)
-                .navigationTitle("Account")
+                .background(Color.blue)
+                .foregroundColor(.white)
+                .clipShape(Capsule())
+                .sheet(isPresented: $isImagePickerPresented) {
+                    ImagePicker(image: $image)
+                }
+                .onChange(of: image) { newImage in
+                    uploadAndUpdateImage(newImage)
+                }
+                
+                //Spacer between photo button and text field
+                Spacer()
+
+                TextField("Username", text: $username)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding()
+
+                TextField("Email", text: $email)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding()
+
+                if !isEmailValid {
+                    Text("Invalid email format")
+                        .foregroundColor(.red)
+                }
+
+                SecureField("Password", text: $password)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding()
+                
+                //Spacer between Text Fields and update button
+                Spacer()
+
+                Button("Update Account") {
+                    print("Update attempt with Username: \(username), Email: \(email), Password: \(password)")
+                }
+                .padding()
+                .background(isEmailValid ? Color.blue : Color.gray)
+                .foregroundColor(.white)
+                .cornerRadius(8)
+                .disabled(!isEmailValid)
+                
+                //Lower Spacer
+                Spacer()
+            }
+            .navigationBarTitle("Account", displayMode: .inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button("Back") {
+                        presentationMode.wrappedValue.dismiss()
+                    }
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("Logout") {
+                        session.logout()
+                    }
+                }
+            }
+            .onAppear {
+                loadProfileImage()
             }
         }
     }
-    
-    private func validateEmail(email: String) -> Bool {
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-        return emailPred.evaluate(with: email)
+
+    private func uploadAndUpdateImage(_ newImage: UIImage?) {
+        guard let newImage = newImage else { return }
+        ImageManager.shared.uploadImage(image: newImage) { result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let url):
+                    ImageManager.shared.saveProfileImageURL(url) { success in
+                        if success {
+                            print("Image URL saved successfully")
+                            // Optionally, update the local state if needed
+                        } else {
+                            print("Failed to save image URL")
+                        }
+                    }
+                case .failure(let error):
+                    print("Error uploading image: \(error)")
+                }
+            }
+        }
+    }
+
+    private func loadProfileImage() {
+        ImageManager.shared.fetchProfileImageUrl { url in
+            if let url = url {
+                downloadImage(from: url)
+            }
+        }
+    }
+
+    private func downloadImage(from url: URL) {
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            guard let data = data, error == nil else { return }
+            DispatchQueue.main.async {
+                self.image = UIImage(data: data)
+            }
+        }.resume()
     }
 }
 
-// Preview Provider for SwiftUI Previews
+// Preview Provider
 struct AccountView_Previews: PreviewProvider {
     static var previews: some View {
-        AccountView()
+        AccountView().environmentObject(SessionStore())
     }
 }

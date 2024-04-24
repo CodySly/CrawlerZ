@@ -22,8 +22,6 @@ struct SideMenuContent: View {
                         .frame(width: 150, height: 150)
                         .padding(.top, 25)
                     
-
-                    
                     VStack {
                         HStack {
                             Text("Menu")
@@ -32,7 +30,6 @@ struct SideMenuContent: View {
                                 .fontWeight(.bold)
                         }
                         .padding(.bottom, 25)
-                        //Spacer(minLength: 0)
                     }
                     
                     VStack(spacing: 50) {
@@ -55,16 +52,16 @@ struct SideMenuContent: View {
                             }
                         })
                         NavigationLink(
-                                destination: ContentView(),
+                                destination: SocialGridView(),
                                 label: {
                         HStack(spacing: 15) {
-                                Image(systemName: "map")
+                                Image(systemName: "person.bubble.fill")
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
                                     .frame(width: 30, height: 30)
                                     .foregroundColor(.indigo)
                                 
-                                Text("Map View")
+                                Text("Social Media")
                                     .font(.title3)
                                     .fontWeight(.bold)
                                     .foregroundColor(.black)
@@ -75,7 +72,6 @@ struct SideMenuContent: View {
                         Spacer(minLength: 25)
                     }
                 }
-//                .overlay(backButton, alignment: .topLeading)
             }
     }
     @ViewBuilder
@@ -83,20 +79,4 @@ struct SideMenuContent: View {
     }
 }
 
-//extension SideMenuContent {
-//    private var backButton: some View {
-//        Button {
-//            presentSideMenu.toggle()
-//        } label: {
-//            Image(systemName: "xmark")
-//                .font(.footnote)
-//                .padding()
-//                .foregroundColor(.black)
-//                .background(.thickMaterial)
-//                .background(Color(.red))
-//                .cornerRadius(10)
-//                .shadow(radius: 4)
-//        }
-//    }
-//}
 
