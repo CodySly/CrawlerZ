@@ -7,17 +7,25 @@
 
 import SwiftUI
 
-    struct ContentView: View {
-        @EnvironmentObject var session: SessionStore
-        
-        var body: some View {
-            if session.isLoggedIn {
-                MainView()  // Your main app view for logged-in users
-            } else {
-                LoginAndRegistrationView()  // A view that handles both login and registration
-            }
+struct ContentView: View {
+    @EnvironmentObject var session: SessionStore
+    @StateObject var messageViewModel = MessageViewModel()
+
+    var body: some View {
+        if session.isLoggedIn {
+            MainView(messageViewModel: messageViewModel)
+                .onAppear {
+                    messageViewModel.userEmail = session.userEmail
+                    messageViewModel.userName = session.userName
+                }
+        } else {
+            LoginAndRegistrationView(messageViewModel: messageViewModel)
         }
     }
+}
+
+
+
     
 
 

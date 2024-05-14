@@ -8,6 +8,7 @@
 import SwiftUI
 import FirebaseCore
 import FirebaseAuth
+import Combine
 
 enum UserStatus {
     case loggedIn
@@ -37,13 +38,20 @@ struct CrawlersApp: App {
 
 class SessionStore: ObservableObject {
     @Published var isLoggedIn: Bool = false
+    @Published var userEmail: String = ""
+    @Published var userName: String = ""
 
     func listen() {
-        Auth.auth().addStateDidChangeListener { auth, user in
-            if user != nil {
-                self.isLoggedIn = true
+        Auth.auth().addStateDidChangeListener { [weak self] auth, user in
+            if let user = user {
+                self?.isLoggedIn = true
+                self?.userEmail = user.email ?? ""
+                // Assuming the display name is being used as the username
+                self?.userName = user.displayName ?? "Anonymous"
             } else {
-                self.isLoggedIn = false
+                self?.isLoggedIn = false
+                self?.userEmail = ""
+                self?.userName = ""
             }
         }
     }
@@ -53,8 +61,14 @@ class SessionStore: ObservableObject {
     }
 
     func logout() {
-        try? Auth.auth().signOut()
+        do {
+            try Auth.auth().signOut()
+        } catch let signOutError {
+            print("Error signing out: \(signOutError.localizedDescription)")
+        }
         self.isLoggedIn = false
+        self.userEmail = ""
+        self.userName = ""
     }
 }
 

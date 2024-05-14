@@ -52,6 +52,23 @@ struct SideMenuContent: View {
                             }
                         })
                         NavigationLink(
+                                destination: TreadView(),
+                                label: {
+                        HStack(spacing: 15) {
+                                Image(systemName: "signpost.right.and.left")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 30, height: 30)
+                                    .foregroundColor(.indigo)
+                                
+                                Text("Treads")
+                                    .font(.title3)
+                                    .fontWeight(.bold)
+                                    .foregroundColor(.black)
+                                    .frame(alignment: .leading)
+                            }
+                        })
+                        NavigationLink(
                                 destination: SocialGridView(),
                                 label: {
                         HStack(spacing: 15) {
@@ -68,7 +85,6 @@ struct SideMenuContent: View {
                                     .frame(alignment: .leading)
                             }
                         })
-
                         Spacer(minLength: 25)
                     }
                 }

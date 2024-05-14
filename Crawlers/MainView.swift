@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MainView: View {
+    @ObservedObject var messageViewModel: MessageViewModel
     @State private var presentSideMenu = false
     @State private var presentAccountView = false
     @State private var presentMapView = false
@@ -150,6 +151,8 @@ struct MainView: View {
     }
 }
 
-#Preview {
-    MainView()
+struct MainView_Previews: PreviewProvider {
+    static var previews: some View {
+        MainView(messageViewModel: MessageViewModel())
+    }
 }

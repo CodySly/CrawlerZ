@@ -10,13 +10,14 @@ import FirebaseAuth
 
 struct LoginView: View {
     @Environment(\.presentationMode) var presentationMode
+    @ObservedObject var messageViewModel: MessageViewModel
     @State private var errorMessage: String?
-    @State private var email = "" {
+    @State private var email: String = "" {
         didSet {
             isEmailValid = validateEmail(email: email)
         }
     }
-    @State private var password = ""
+    @State private var password: String = ""
     @State private var isEmailValid: Bool = true
     @Binding var userStatus: UserStatus
     
@@ -61,7 +62,7 @@ struct LoginView: View {
                             .cornerRadius(8)
                             .disabled(!isEmailValid)
                     }
-                    NavigationLink("Register", destination: RegistrationView(userStatus: $userStatus))
+                    NavigationLink("Register", destination: RegistrationView(messageViewModel: messageViewModel,userStatus: $userStatus))
                         .padding()
                         .fontWeight(.bold)
                         .foregroundColor(.red)
@@ -81,7 +82,6 @@ struct LoginView: View {
     }
     
     func loginUser() {
-        // Check for valid email and non-empty password
         guard isEmailValid, !password.isEmpty else {
             errorMessage = "Invalid email format or empty password"
             print("Failed attempt: Invalid email format or empty password")
@@ -90,7 +90,6 @@ struct LoginView: View {
 
         Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
             if let error = error {
-                // Log and handle errors
                 DispatchQueue.main.async {
                     self.errorMessage = error.localizedDescription
                 }
@@ -98,22 +97,27 @@ struct LoginView: View {
                 return
             }
 
-            if authResult?.user != nil {
+            if let user = authResult?.user {
                 DispatchQueue.main.async {
                     // Update user status on the main thread
                     self.userStatus = .loggedIn
+                    // Optionally update user information in the view model
+                    // self.messageViewModel.userEmail = user.email ?? ""
+                    // self.messageViewModel.userName = user.displayName ?? "" // displayName might be nil if not set
                 }
             }
         }
     }
+
 }
 
-// Preview Provider
 struct LoginView_Previews: PreviewProvider {
     @State static var previewUserStatus = UserStatus.loggedOut // Create a mutable state for preview
     
     static var previews: some View {
-        LoginView(userStatus: $previewUserStatus)
+        LoginView(messageViewModel: MessageViewModel(), userStatus: $previewUserStatus)
     }
 }
+
+
 

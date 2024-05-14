@@ -10,12 +10,14 @@ import FirebaseAuth
 
 struct RegistrationView: View {
     @Environment(\.presentationMode) var presentationMode
+    @ObservedObject var messageViewModel: MessageViewModel
     @Binding var userStatus: UserStatus  // Added binding to userStatus
     @State private var email: String = "" {
         didSet {
             isEmailValid = validateEmail(email: email)
         }
     }
+    @State private var username: String = ""
     @State private var password: String = ""
     @State private var errorMessage: String?
     @State private var isEmailValid: Bool = true
@@ -44,6 +46,10 @@ struct RegistrationView: View {
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .padding()
                     
+                    TextField("Username", text: $username) // Add this TextField for username
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .padding()
+                    
                     if !isEmailValid {
                         Text("Invalid email format")
                             .foregroundColor(.red)
@@ -67,15 +73,14 @@ struct RegistrationView: View {
                     }
                     
                     Button("Register") {
-                        // Ensuring email is valid before proceeding
-                        guard isEmailValid else { return }
-                        registerUser(email: email, password: password)
+                        guard isEmailValid, password == confirmPassword, !username.isEmpty else { return }
+                        registerUser(email: email, password: password, username: username)
                     }
                     .padding()
                     .foregroundColor(.white)
-                    .background(isEmailValid ? Color.blue : Color.gray)
+                    .background(isEmailValid && password == confirmPassword && !username.isEmpty ? Color.blue : Color.blue)
                     .cornerRadius(8)
-                    .disabled(!isEmailValid)
+                    .disabled(!isEmailValid || password != confirmPassword || username.isEmpty)
                 }
                 .padding()
                 .navigationTitle("User Registration")
@@ -90,17 +95,22 @@ struct RegistrationView: View {
         return emailPred.evaluate(with: email)
     }
     
-    private func registerUser(email: String, password: String) {
+    private func registerUser(email: String, password: String, username: String) {
         Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
             if let error = error {
                 self.errorMessage = error.localizedDescription
-                // Implement registration logic here, potentially involving asynchronous operations
-                // Placeholder for registration logic
-                print("Attempting to register user with email: \(email) and password: \(password)")
-            } else if authResult?.user != nil {
-                DispatchQueue.main.async {
-                    self.userStatus = .loggedIn // or .loggedOut if they need to log in after registering
-                    self.presentationMode.wrappedValue.dismiss()
+            } else if let user = authResult?.user {
+                let changeRequest = user.createProfileChangeRequest()
+                changeRequest.displayName = username
+                changeRequest.commitChanges { error in
+                    if let error = error {
+                        self.errorMessage = error.localizedDescription
+                    } else {
+                        DispatchQueue.main.async {
+                            self.userStatus = .loggedIn // Adjust as needed for your user flow
+                            self.presentationMode.wrappedValue.dismiss()
+                        }
+                    }
                 }
             }
         }
@@ -108,10 +118,12 @@ struct RegistrationView: View {
 }
 // Preview provider
 struct RegistrationView_Previews: PreviewProvider {
-    @State static var previewUserStatus = UserStatus.notRegistered  // Create a mutable state for preview
+    @State static var previewUserStatus = UserStatus.loggedOut // Create a mutable state for preview
+
     static var previews: some View {
-        RegistrationView(userStatus: $previewUserStatus)
+        RegistrationView(messageViewModel: MessageViewModel(), userStatus: $previewUserStatus)
     }
 }
+
 
     

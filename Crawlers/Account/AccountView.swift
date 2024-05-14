@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct AccountView: View {
     @EnvironmentObject var session: SessionStore
@@ -68,20 +69,18 @@ struct AccountView: View {
                 SecureField("Password", text: $password)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
-                
-                //Spacer between Text Fields and update button
+
                 Spacer()
 
                 Button("Update Account") {
-                    print("Update attempt with Username: \(username), Email: \(email), Password: \(password)")
+                    updateAccount()
                 }
                 .padding()
                 .background(isEmailValid ? Color.blue : Color.gray)
                 .foregroundColor(.white)
                 .cornerRadius(8)
                 .disabled(!isEmailValid)
-                
-                //Lower Spacer
+
                 Spacer()
             }
             .navigationBarTitle("Account", displayMode: .inline)
@@ -98,11 +97,39 @@ struct AccountView: View {
                 }
             }
             .onAppear {
-                loadProfileImage()
+                loadUserData()
             }
         }
     }
 
+    private func loadUserData() {
+        if let user = Auth.auth().currentUser {
+            email = user.email ?? ""
+            username = user.displayName ?? ""
+        }
+    }
+
+    private func updateAccount() {
+        if let user = Auth.auth().currentUser {
+            let changeRequest = user.createProfileChangeRequest()
+            changeRequest.displayName = username
+            changeRequest.commitChanges { error in
+                if let error = error {
+                    print("Error updating user profile: \(error.localizedDescription)")
+                }
+            }
+
+            // Update email with verification
+            user.sendEmailVerification(beforeUpdatingEmail: email) { error in
+                if let error = error {
+                    print("Error sending email verification: \(error.localizedDescription)")
+                } else {
+                    print("Verification email sent. Please verify to update your email address.")
+                }
+            }
+        }
+    }
+    
     private func uploadAndUpdateImage(_ newImage: UIImage?) {
         guard let newImage = newImage else { return }
         ImageManager.shared.uploadImage(image: newImage) { result in
