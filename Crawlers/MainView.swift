@@ -20,10 +20,10 @@ struct MainView: View {
                 Color(.systemGray).edgesIgnoringSafeArea(.all)
                 
                 VStack {
-                    Image("KingCrawlersLogo")
+                    Image("CrawlersLogoTrans")
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 300, height: 125)
+                        .frame(width: 300, height: 150)
                         .padding(.top, 20)
                     
                     HStack(spacing: 20) {
